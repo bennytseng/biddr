@@ -13,7 +13,7 @@
     <div class = "navbar-fixed">
       <nav>
         <div class="nav-wrapper">
-          <a href="/" class="brand-logo center">Biddr</a>
+          <a href="/" class="brand-logo">Biddr</a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <% if user_signed_in? %>
@@ -21,22 +21,24 @@
             <li><%= link_to "Logout", sessions_path,
             method: :delete, data: {confirm: "Are you sure you want to log out?"}%></li>
             <li><%= link_to "Create New Auction Items", new_auction_path %></li>
+            <li><%= link_to "Your Bids", current_bids_path %></li>
             <% else %>
             <li><%= link_to "Sign Up", new_user_path %></li>
             <li><%= link_to "Login", new_session_path %></li>
             <% end %>
-            <li><%= link_to "View Auction Items", auctions_path %></li>
+            <li><%= link_to "View All Auction Items", auctions_path %></li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <% if user_signed_in? %>
             <li><%= link_to "Logout", sessions_path,
             method: :delete, data: {confirm: "Are you sure you want to log out?"}%></li>
             <li><%= link_to "Create New Auction Items", new_auction_path %><</li>
+            <li><%= link_to "Your Bids", current_bids_path %></li>
             <% else %>
             <li><%= link_to "Sign Up", new_user_path %></li>
             <li><%= link_to "Login", new_session_path %></li>
             <% end %>
-            <li><%= link_to "View Auction Items", auctions_path %></li>
+            <li><%= link_to "View All Auction Items", auctions_path %></li>
           </ul>
         </div>
       </nav>
@@ -46,7 +48,9 @@
       <%= flash[:notice] %>
   </div>
 
+<main>
   <%= yield %>
+</main>
 
   <footer class="page-footer">
     <div class="container">

@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     delete :destroy, on: :collection
   end
 
+  get "/current_bids" => "home#current_bids"
+
   root "home#index"
 end

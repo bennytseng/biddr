@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Biddr</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class = "navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="/" class="brand-logo center">Biddr</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <% if user_signed_in? %>
+            <li>Hello <%= current_user.username %></li>
+            <li><%= link_to "Logout", sessions_path,
+            method: :delete, data: {confirm: "Are you sure you want to log out?"}%></li>
+            <li><%= link_to "Create New Auction Items", new_auction_path %></li>
+            <% else %>
+            <li><%= link_to "Sign Up", new_user_path %></li>
+            <li><%= link_to "Login", new_session_path %></li>
+            <% end %>
+            <li><%= link_to "View Auction Items", auctions_path %></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <% if user_signed_in? %>
+            <li><%= link_to "Logout", sessions_path,
+            method: :delete, data: {confirm: "Are you sure you want to log out?"}%></li>
+            <li><%= link_to "Create New Auction Items", new_auction_path %><</li>
+            <% else %>
+            <li><%= link_to "Sign Up", new_user_path %></li>
+            <li><%= link_to "Login", new_session_path %></li>
+            <% end %>
+            <li><%= link_to "View Auction Items", auctions_path %></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+  <div class="flash-message">
+      <%= flash[:notice] %>
+  </div>
+
+  <%= yield %>
+
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Biddr</h5>
+          <p class="grey-text text-lighten-4">Bid on Auction Items!</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2016 Benny Tseng | CodeCore
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<h1>All Auction Items</h1>
+
+<table class = "highlight bordered">
+  <thead>
+    <tr>
+      <th data-field="ID">ID</th>
+      <th data-field="title">Title</th>
+      <th data-field="description">Description</th>
+      <th data-field="price">Item Price</th>
+      <th data-field="date_create">Date Created</th>
+      <th data-field="date_end">Ending Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auctions.each do |q| %>
+    <tr>
+      <td><%= link_to q.id, auction_path(q) %></td>
+      <td><%= link_to q.title, auction_path(q) %></td>
+      <td><%= q.details %></td>
+      <td>$<%= q.price %></td>
+      <td><%= q.created_at %></td>
+      <td><%= q.date %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= paginate @auctions %>

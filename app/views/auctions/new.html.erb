@@ -1,0 +1,32 @@
+<h1>Create New Auction Item</h1>
+<div class ="row sign-up-errors">
+  <% if @auction.errors.any? %>
+      <ul>
+        <% @auction.errors.full_messages.each do |msg| %>
+        <li>- <%= msg %></li>
+        <% end %>
+      </ul>
+  <% end %>
+</div>
+
+<div class ="row">
+    <%= form_for @auction do |f| %>
+    <div class ="row input field col s12">
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+    </div>
+    <div class ="row input field col s12">
+        <%= f.label :details %>
+        <%= f.text_area :details, class: 'materialize-textarea' %>
+    </div>
+    <div class ="row input field col s12">
+        <%= f.label :date %>
+        <%= f.date_field :date %>
+    </div>
+    <div class ="row input field col s12">
+        <%= f.label :price %>
+        <%= f.text_field :price %>
+    </div>
+    <%= f.submit class: 'btn waves-effect waves-light' %>
+    <% end %>
+</div>

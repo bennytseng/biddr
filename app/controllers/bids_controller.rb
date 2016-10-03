@@ -8,7 +8,7 @@ class BidsController < ApplicationController
     if @bid.save
       redirect_to auction_path(@auction), notice: "Bid Submitted"
     else
-      render auction_path(@auction), notice: "Bid Unsuccessful"
+      redirect_to auction_path(@auction), notice: "Bid Unsuccessful"
     end
   end
 end

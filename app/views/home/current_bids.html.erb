@@ -1,7 +1,28 @@
+<h1>Current Bids</h1>
+
 <% if user_signed_in? %>
-<div class="row center">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-</div>
+<table class = "highlight bordered">
+  <thead>
+    <tr>
+      <th data-field="title">Auction Title</th>
+      <th data-field="description">Description</th>
+      <th data-field="price">Item Price</th>
+      <th data-field="date_create">Date Created</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bids.each do |bid| %>
+    <tr>
+      <td><%= link_to bid.auction.title, auction_path(bid) %></td>
+      <td><%= bid.auction.details %></td>
+      <td>$<%= bid.price %></td>
+      <td><%= bid.created_at %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <% else %>
   <div class="row center">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>

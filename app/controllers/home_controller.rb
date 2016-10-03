@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   end
 
   def current_bids
+    @bids = Bid.where(user: session[:user_id])
   end
 
 end

@@ -22,7 +22,7 @@
   </div>
 
 
-  <h2>Previous Bids</h2>
+  <h2>Bid History</h2>
   <% @auction.bids.each do |bid| %>
   <ul class = "collection">
     <li class = "collection-item">$<%= bid.price %> at <%= bid.created_at %> by <%= User.find_by_id(bid.user).username %></li>
